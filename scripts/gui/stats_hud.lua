@@ -427,7 +427,7 @@ local function get_platform_propellant_text(surface)
     return nil
   end
 
-  local ok_find, thrusters = pcall(surface.find_entities_filtered, surface, { type = "thruster" })
+  local ok_find, thrusters = pcall(function() return surface.find_entities_filtered({ type = "thruster" }) end)
   if not ok_find or type(thrusters) ~= "table" or #thrusters == 0 then
     return nil
   end

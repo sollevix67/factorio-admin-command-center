@@ -63,7 +63,7 @@ function M.run(player, planet_name)
     surface = planet.surface
 
     if not (surface and surface.valid) then
-      local ok, created_surface = pcall(planet.create_surface, planet)
+      local ok, created_surface = pcall(function() return planet.create_surface() end)
       if not ok or not (created_surface and created_surface.valid) then
         player.print({"facc.teleport-to-planet-failed", display_name})
         return

@@ -11,7 +11,7 @@ local function get_or_create_surface(planet)
     return planet.surface, false, nil
   end
 
-  local ok, created_surface = pcall(planet.create_surface, planet)
+  local ok, created_surface = pcall(function() return planet.create_surface() end)
   if not ok then
     return nil, false, tostring(created_surface)
   end

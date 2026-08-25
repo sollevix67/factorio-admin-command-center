@@ -785,7 +785,7 @@ local function surface_supports_property(player, property_name)
   if not (player and player.valid and player.surface and player.surface.valid) then
     return false
   end
-  local ok = pcall(player.surface.get_property, player.surface, property_name)
+  local ok = pcall(function() return player.surface.get_property(property_name) end)
   return ok
 end
 
