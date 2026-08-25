@@ -5,7 +5,7 @@
 local M = {}
 local compat = require("scripts/utils/mod_compat")
 
-local space_age_enabled = compat.is_space_age_stack_active()
+local space_age_enabled = function() return compat.is_space_age_stack_active() end
 
 local function get_required_fluid_name(thruster, index)
   local ok_proto, proto = pcall(function() return thruster:get_fluid_box_prototype(index) end)
@@ -45,7 +45,7 @@ function M.run(player)
     return
   end
 
-  if not space_age_enabled then
+  if not space_age_enabled() then
     player.print({ "facc.fill-thrusters-no-space-age" })
     return
   end

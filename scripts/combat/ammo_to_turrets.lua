@@ -11,7 +11,7 @@ local chunk_jobs = require("scripts/utils/chunk_job_runner")
 local compat = require("scripts/utils/mod_compat")
 
 -- Detect whether the Space Age DLC/mod is active
-local space_age_enabled = compat.is_space_age_stack_active()
+local space_age_enabled = function() return compat.is_space_age_stack_active() end
 local JOBS_KEY = "facc_jobs_ammo_to_turrets"
 local CHUNKS_PER_TICK = 8
 local STATUS_OPTIONS = {
@@ -33,7 +33,7 @@ local function get_target_turret_names()
 
   add_if_exists("gun-turret")
   add_if_exists("artillery-turret")
-  if space_age_enabled then
+  if space_age_enabled() then
     add_if_exists("rocket-turret")
     add_if_exists("railgun-turret")
   end
@@ -105,10 +105,10 @@ function M.on_tick(_event)
           ammo_count = 100
         elseif turret.name == "artillery-turret" then
           ammo_name, ammo_count = "artillery-shell", 5
-        elseif space_age_enabled and turret.name == "rocket-turret" then
+        elseif space_age_enabled() and turret.name == "rocket-turret" then
           ammo_name = compat.find_first_existing("item_prototypes", {"rocket", "explosive-rocket"})
           ammo_count = 100
-        elseif space_age_enabled and turret.name == "railgun-turret" then
+        elseif space_age_enabled() and turret.name == "railgun-turret" then
           ammo_name, ammo_count = "railgun-ammo", 10
         end
 
