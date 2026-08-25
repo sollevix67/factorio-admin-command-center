@@ -128,7 +128,6 @@ local function ensure_inventory_ids()
     ids.car_trash = defines.inventory.car_trash
     -- Rocket silo trash: try the common keys (both guarded)
     ids.rocket_silo_trash = defines.inventory.rocket_silo_trash
-                                  or defines.inventory.rocket_silo_trash_inventory
     ids.cargo_landing_pad_trash = defines.inventory.cargo_landing_pad_trash
     ids.character_main = defines.inventory.character_main
     ids.chest = defines.inventory.chest

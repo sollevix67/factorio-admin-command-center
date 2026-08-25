@@ -327,7 +327,7 @@ if show_cheat_tab then
   }
   if data.raw.recipe["heat-interface"] then
     local r = data.raw.recipe["heat-interface"]
-    r.category    = nil
+    r.categories  = nil
     r.ingredients = heat_ingredients
     default_properties(r)
     default_properties(data.raw.item["heat-interface"])
@@ -401,7 +401,7 @@ if show_cheat_tab then
       local r = {
         type            = "recipe",
         name            = name,
-        category        = def.category,
+        categories      = def.category and {def.category} or nil,
         energy_required = 0.5,
         ingredients     = def.ingredients,
         results         = {{type="item", name=name, amount=1}}
@@ -414,7 +414,7 @@ if show_cheat_tab then
       local r = {
         type            = "recipe",
         name            = "turbo-loader",
-        category        = "crafting-with-fluid",
+        categories      = {"crafting-with-fluid"},
         energy_required = 0.5,
         ingredients     = {
           {type="item",  name="tungsten-plate", amount=1000},

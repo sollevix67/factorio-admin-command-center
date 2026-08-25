@@ -434,9 +434,9 @@ local function get_platform_propellant_text(surface)
 
   local total = 0
   for _, thruster in pairs(thrusters) do
-    if thruster and thruster.valid and thruster.fluidbox then
-      for i = 1, #thruster.fluidbox do
-        local fluid = thruster.fluidbox[i]
+    if thruster and thruster.valid then
+      for i = 1, thruster.fluids_count do
+        local fluid = thruster:get_fluid(i)
         if fluid and fluid.amount then
           total = total + fluid.amount
         end
