@@ -134,7 +134,7 @@ data:extend({
   {
     type                  = "custom-input",
     name                  = "facc_toggle_gui",
-    key_sequence          = "CONTROL + PERIOD",
+    key_sequence          = "CONTROL+PERIOD",
     consuming             = "game-only",
     localised_name        = {"controls.facc_toggle_gui"},
     localised_description = {"controls.facc_toggle_gui_description"}
@@ -183,7 +183,7 @@ do
 
       select = {
         border_color    = {0, 200, 0},
-        mode            = {"upgrade"},
+        mode            = {"upgrade", "any-entity"},
         cursor_box_type = "not-allowed",
         started_sound   = { filename = "__core__/sound/upgrade-select-start.ogg" },
         ended_sound     = { filename = "__core__/sound/upgrade-select-end.ogg" }
@@ -195,7 +195,7 @@ do
       },
       reverse_select = {
         border_color    = {0, 200, 0},
-        mode            = {"upgrade"},
+        mode            = {"upgrade", "any-entity"},
         cursor_box_type = "not-allowed"
       },
       reverse_alt_select = {
@@ -228,7 +228,7 @@ data:extend({
   {
     type                  = "custom-input",
     name                  = "facc_console_exec_input",
-    key_sequence          = "CONTROL + ENTER",
+    key_sequence          = "CONTROL+ENTER",
     consuming             = "game-only",
     localised_name        = {"controls.facc_console_exec_input"},
     localised_description = {"controls.facc_console_exec_input_description"}
@@ -242,7 +242,7 @@ data:extend({
   {
     type                  = "custom-input",
     name                  = "facc_toggle_fast_teleport",
-    key_sequence          = "CONTROL + SHIFT + T",
+    key_sequence          = "CONTROL+SHIFT+T",
     consuming             = "game-only",
     localised_name        = {"controls.facc_toggle_fast_teleport"},
     localised_description = {"controls.facc_toggle_fast_teleport_description"}
