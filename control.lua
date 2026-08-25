@@ -7,6 +7,15 @@ local permissions = require("scripts/utils/permissions")
 _G.is_allowed = permissions.is_allowed
 local flib_on_tick_n = require("__flib__.on-tick-n")
 local flib_table = require("__flib__.table")
+-- Polyfill: flib_table.for_each was removed in flib 0.17 (renamed to any_of with different semantics).
+-- Restoring it here so all modules that depend on it continue to work.
+if not flib_table.for_each then
+  function flib_table.for_each(tbl, fn)
+    for k, v in pairs(tbl) do
+      fn(v, k)
+    end
+  end
+end
 local compat = require("scripts/utils/mod_compat")
 
 local function safe_control_call(label, fn, ...)

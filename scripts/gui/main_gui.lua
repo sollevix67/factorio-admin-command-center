@@ -12,8 +12,8 @@ local compat = require("scripts/utils/mod_compat")
 --------------------------------------------------------------------------------
 -- Mod detection
 --------------------------------------------------------------------------------
-local quality_enabled   = compat.is_quality_active()
-local space_age_enabled = compat.is_space_age_stack_active()
+local function quality_enabled()   return compat.is_quality_active() end
+local function space_age_enabled() return compat.is_space_age_stack_active() end
 -- Disable “Increase Resources” when infinite resources is active
 local infinite_resources_enabled = settings.startup["facc-infinite-resources"]
     and settings.startup["facc-infinite-resources"].value
@@ -785,7 +785,7 @@ local function surface_supports_property(player, property_name)
   if not (player and player.valid and player.surface and player.surface.valid) then
     return false
   end
-  local ok = pcall(player.surface.get_property, player.surface, property_name)
+  local ok = pcall(function() return player.surface.get_property(property_name) end)
   return ok
 end
 
@@ -805,32 +805,32 @@ local function is_feature_enabled(name, player)
     if planet_name == "nauvis" then
       return true
     end
-    return space_age_enabled
+    return space_age_enabled()
   end
   if name == "facc_surface_no_enemies_mode" then
     return surface_supports_no_enemies_mode(player)
   end
   if name == "facc_surface_pressure" then
-    return space_age_enabled and surface_supports_property(player, "pressure")
+    return space_age_enabled() and surface_supports_property(player, "pressure")
   end
   if name == "facc_surface_magnetic_field" then
-    return space_age_enabled and surface_supports_property(player, "magnetic-field")
+    return space_age_enabled() and surface_supports_property(player, "magnetic-field")
   end
   if name == "facc_surface_gravity" then
-    return space_age_enabled and surface_supports_property(player, "gravity")
+    return space_age_enabled() and surface_supports_property(player, "gravity")
   end
-  if name == "facc_set_platform_distance" then return space_age_enabled end
-  if name == "facc_fill_platform_thrusters" then return space_age_enabled end
+  if name == "facc_set_platform_distance" then return space_age_enabled() end
+  if name == "facc_fill_platform_thrusters" then return space_age_enabled() end
   if name == "facc_create_full_tank" then
     return compat.prototype_exists("item_prototypes", "tank")
   end
   if name == "facc_create_full_spidertron" then
     return compat.prototype_exists("item_prototypes", "spidertron")
   end
-  if name == "facc_generate_planet_surfaces" then return space_age_enabled end
+  if name == "facc_generate_planet_surfaces" then return space_age_enabled() end
   if name == "facc_convert_inventory"
       or name == "facc_upgrade_blueprints" then
-    return quality_enabled
+    return quality_enabled()
   end
   return true
 end

@@ -43,14 +43,17 @@ end
 
 function M.is_quality_active()
   return M.is_mod_active("quality")
+    or (script and script.feature_flags and script.feature_flags.quality)
 end
 
 function M.is_space_age_active()
   return M.is_mod_active("space-age")
+    or (script and script.feature_flags and script.feature_flags.space_travel)
 end
 
 function M.is_elevated_rails_active()
   return M.is_mod_active("elevated-rails")
+    or (script and script.feature_flags and script.feature_flags.rail_bridges)
 end
 
 -- Space Age gameplay stack as shipped by the base game.
