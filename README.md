@@ -1,13 +1,10 @@
-# Factorio Admin Command Center (FACC)
-
-A compact admin toolkit for Factorio 2.0 with a category-based GUI, live sliders/switches, and no console dependency for most actions.
-
-- 🔗 Mod Portal: https://mods.factorio.com/mod/factorio-admin-command-center
-- 🔗 GitHub: https://github.com/factoriocenter/factorio-admin-command-center
+# Factorio Admin Command Center unofficial version for Factorio Experimental (2.1)
+The origina mod was created by https://github.com/louanfontenele into it's repo at https://github.com/factoriocenter/factorio-admin-command-center
+A compact admin toolkit for Factorio 2.1 with a category-based GUI, live sliders/switches, and no console dependency for most actions.
 
 ## Current Version
 
-- 🏷️ Version: `4.3.1`
+- 🏷️ Version: `4.3.3`
 - 📝 Changelog: [changelog.txt](changelog.txt)
 
 ## Features (All Current)
