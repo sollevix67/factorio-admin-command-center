@@ -1,4 +1,21 @@
 ---------------------------------------------------------------------------------------------------
+Version: 4.3.3
+Date: 2026-08-25
+  Changes:
+    - Updated the mod for Factorio 2.1 compatibility (factorio_version and dependencies bumped to 2.1).
+    - Replaced recipe "category" with "categories" (array) in prototypes, as required by 2.1.
+    - Added "any-entity" to the Legendary Upgrader selection modes (selection flags no longer imply it in 2.1).
+    - Updated custom-input key sequences to the non-spaced format required by 2.1 (e.g. "CONTROL+PERIOD").
+    - Rewrote thruster fluid handling to use the new 2.1 entity fluid API (LuaFluidBox was removed): Stats HUD propellant display and "Fill Platform Thrusters".
+    - Replaced flib_math floor/max/min wrappers with native Lua math (removed in flib 0.17).
+    - Added a polyfill for flib_table.for_each (removed in flib 0.17).
+    - Removed the obsolete rocket silo trash inventory fallback in Instant Trash.
+  Bugfixes:
+    - Fixed Space Age/Quality/Elevated Rails detection: DLC features built into the base game are now detected through script.feature_flags (space_travel, quality, rail_bridges) in addition to script.active_mods.
+    - Fixed grayed-out Space Age options (Set Surface Gravity/Pressure/Magnetic Field, planet teleport, etc.) caused by invalid pcall calls on Factorio API methods (methods are already bound to their instance, so the extra self argument was interpreted as a parameter).
+    - Fixed planet surface creation (teleport and generate) that failed silently for the same reason.
+
+---------------------------------------------------------------------------------------------------
 Version: 4.3.2
 Date: 2026-04-26
   Bugfixes:
